@@ -1,0 +1,47 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    admin.regalo:
+        class: AppBundle\Admin\RegaloAdmin
+        arguments: [~, AppBundle\Entity\Regalo, AppBundle:RegaloAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Activos }
+        calls:
+            - [ setTemplate, [edit, :Admin:edit_regalo.html.twig]]
+    admin.regalo_pasado:
+        class: AppBundle\Admin\RegaloPasadoAdmin
+        arguments: [~, AppBundle\Entity\Regalo, AppBundle:RegaloPasadoAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Pasados }
+    admin.configuracion:
+        class: AppBundle\Admin\ConfiguracionAdmin
+        arguments: [~, AppBundle\Entity\Configuracion, AppBundle:ConfiguracionAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Mi configuración }
+        calls:
+            - [ setTemplate, [myEdit, :Admin:configuracion.html.twig]]
+    admin.comprador:
+        class: AppBundle\Admin\CompradorAdmin
+        arguments: [~, AppBundle\Entity\Comprador, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Compradores }
+        calls:
+            - [ addChild, [ '@admin.pago' ] ]
+    admin.destinatario:
+        class: AppBundle\Admin\DestinatarioAdmin
+        arguments: [~, AppBundle\Entity\Destinatario, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Destinatarios }
+    admin.pago:
+        class: AppBundle\Admin\PagoAdmin
+        arguments: [~, AppBundle\Entity\Pago, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Pagos }
+    admin.tienda:
+        class: AppBundle\Admin\TiendaAdmin
+        arguments: [~, AppBundle\Entity\Tienda, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Tiendas }

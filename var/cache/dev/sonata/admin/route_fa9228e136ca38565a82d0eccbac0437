@@ -1,0 +1,1 @@
+a:7:{s:15:"admin.pago.list";s:9:"pago_list";s:17:"admin.pago.create";s:11:"pago_create";s:16:"admin.pago.batch";s:10:"pago_batch";s:15:"admin.pago.edit";s:9:"pago_edit";s:17:"admin.pago.delete";s:11:"pago_delete";s:15:"admin.pago.show";s:9:"pago_show";s:17:"admin.pago.export";s:11:"pago_export";}
